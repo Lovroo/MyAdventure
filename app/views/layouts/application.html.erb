@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <%= favicon_link_tag asset_path('MyAdventure-logos.jpeg') %>
     <style>
         body,h1 {font-family: "Raleway", sans-serif}
         body, html {height: 100%}
@@ -24,6 +25,11 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div class="w3-bar w3-border w3-card-4 w3-light-grey" style="align-items: center;">
+    <%= display_navbar_session_links %>
+  </div>
+  <%= notice %>
+  <%= alert %>
+  <%= yield %>
   </body>
 </html>
