@@ -10,6 +10,8 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+#maps
+gem 'mapbox-gl-rails'
 #file validator
 gem 'file_validators'
 #simple forms
