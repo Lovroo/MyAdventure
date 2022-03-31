@@ -129,7 +129,7 @@ function onShowPOI(data, lngLat) {
     poi.innerHTML = "<h2>" + data.name + "<h2>";
     poi.innerHTML += "<p><i>" + getCategoryName(data.kinds) + "</i></p>";
     if (data.preview) {
-        poi.innerHTML += "<img src='"+data.preview.source+"'>";
+        poi.innerHTML += "<img class='map-img' src='"+data.preview.source+"'>";
     }
     poi.innerHTML += data.wikipedia_extracts
         ? data.wikipedia_extracts.html
