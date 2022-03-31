@@ -12,6 +12,8 @@ gem 'pg'
 gem 'puma', '~> 5.0'
 #maps
 gem 'mapbox-gl-rails'
+#Icons
+gem "font-awesome-rails"
 #file validator
 gem 'file_validators'
 #simple forms

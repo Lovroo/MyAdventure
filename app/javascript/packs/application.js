@@ -7,9 +7,14 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-//
-//*= require mapbox-gl
+
+//= require mapbox-gl
 //= require_tree .
+//= require jquery
+//= require chosen-jquery
+//= require country_state_select
+//= require bootstrap
+//= require font-awesome
 
 Rails.start()
 Turbolinks.start()

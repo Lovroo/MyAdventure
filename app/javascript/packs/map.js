@@ -42,7 +42,7 @@ map.on("load", function () {
         maxzoom: 14,
         scheme: "xyz",
         tiles: [
-            "https://api.opentripmap.com/0.1/en/tiles/pois/{z}/{x}/{y}.pbf?kinds=museums&rate=3&apikey=5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d"
+            "https://api.opentripmap.com/0.1/en/tiles/pois/{z}/{x}/{y}.pbf?kinds=interesting_places&rate=3&apikey=5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d"
         ]
     });
     map.addLayer(
@@ -70,7 +70,7 @@ map.on("load", function () {
         maxzoom: 8,
         scheme: "xyz",
         tiles: [
-            "https://api.opentripmap.com/0.1/en/tiles/heat/{z}/{x}/{y}.pbf?kinds=museums&rate=3&apikey=5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d"
+            "https://api.opentripmap.com/0.1/en/tiles/heat/{z}/{x}/{y}.pbf?kinds=interesting_places&rate=3&apikey=5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d"
         ]
     });
     map.addLayer(
@@ -126,7 +126,8 @@ map.on("load", function () {
 
 function onShowPOI(data, lngLat) {
     let poi = document.createElement("div");
-    poi.innerHTML = "<h2>" + data.name + "<h2>";
+    poi.innerHTML = "<h2>" + data.name + "<p><a target='_blank' href='"+ data.otm + "'>" +
+        "<i class='fa fa-heart' style='padding-left: 5%'></i></a></p>" + "<h2>" ;
     poi.innerHTML += "<p><i>" + getCategoryName(data.kinds) + "</i></p>";
     if (data.preview) {
         poi.innerHTML += "<img class='map-img' src='"+data.preview.source+"'>";
