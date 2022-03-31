@@ -1,5 +1,24 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibG92cm9vIiwiYSI6ImNsMWMxMmFvdTAwZnkza3F4NWZuN3B5dzkifQ.EejjM3kd7rMokb1sqS6zhg';
 
+function apiGet(method, query) {
+    return new Promise(function (resolve, reject) {
+        var otmAPI =
+            "https://api.opentripmap.com/0.1/en/places/" +
+            method +
+            "?apikey=" + "5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d";
+        if (query !== undefined) {
+            otmAPI += "&" + query;
+        }
+        fetch(otmAPI)
+            .then(response => response.json())
+            .then(data => resolve(data))
+            .catch(function (err) {
+                console.log("Fetch Error :-S", err);
+            });
+    });
+}
+
+
 var map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/streets-v11",
@@ -23,7 +42,7 @@ map.on("load", function () {
         maxzoom: 14,
         scheme: "xyz",
         tiles: [
-            "https://api.opentripmap.com/0.1/en/tiles/pois/{z}/{x}/{y}.pbf?kinds=museums&rate=2&apikey=5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d"
+            "https://api.opentripmap.com/0.1/en/tiles/pois/{z}/{x}/{y}.pbf?kinds=museums&rate=3&apikey=5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d"
         ]
     });
     map.addLayer(
@@ -51,7 +70,7 @@ map.on("load", function () {
         maxzoom: 8,
         scheme: "xyz",
         tiles: [
-            "https://api.opentripmap.com/0.1/en/tiles/heat/{z}/{x}/{y}.pbf?kinds=museums&rate=2&apikey=5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d"
+            "https://api.opentripmap.com/0.1/en/tiles/heat/{z}/{x}/{y}.pbf?kinds=museums&rate=3&apikey=5ae2e3f221c38a28845f05b63491fa7c34e2bf26d286b76a8e47f69d"
         ]
     });
     map.addLayer(
