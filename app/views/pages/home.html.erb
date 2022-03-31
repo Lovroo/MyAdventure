@@ -1,12 +1,9 @@
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
   <div class="w3-display-topleft w3-padding-large w3-xlarge">
     <%= link_to image_pack_tag('logo/MyAdventure-logos_white.png', style: 'max-height: 100.5px'), root_path, style: ';padding:0px !important;' %>  </div>
-  <div class="w3-display-middle">
-    <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
-    <hr class="w3-border-grey" style="margin:auto;width:40%">
-    <p class="w3-large w3-center">Very soon...</p>
-  </div>
+    <div id='map' style='width: 800px; height: 700px;margin: auto;'></div>
+    <%= javascript_pack_tag 'map'%>
   <div class="w3-display-bottomleft w3-padding-large">
-  Very soon!
+    Very soon!
   </div>
 </div>

@@ -6,11 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+    <script type="text/javascript" src="https://opentripmap.io/js/directory.en.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= favicon_link_tag asset_path('MyAdventure-logos.jpg'), alt: 'logo' %>
     <style>
         body,h1 {font-family: "Raleway", sans-serif}
@@ -20,6 +24,46 @@
             min-height: 100%;
             background-position: center;
             background-size: cover;
+        }
+        #map {
+            display: block;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: 0;
+            right: 0;
+            left: 0;
+        }
+
+        .map-img {
+            margin: auto;
+            padding: 10px;
+            display: block;
+            width: 200px;
+        }
+        .mapboxgl-popup-content{
+            color: black;
+        }
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: .5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-top: 0;
+        }
+
+
+        @media (min-width: 600px){
+            map-img{
+                margin: auto;
+                padding: 10px;
+                display: block;
+                width: 400px;
+            }
+            .mapboxgl-popup {
+                max-width: 500px !important;
+            }
         }
     </style>
   </head>
