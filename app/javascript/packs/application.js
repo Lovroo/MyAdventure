@@ -16,6 +16,13 @@ import "channels"
 //= require bootstrap
 //= require font-awesome
 
+
+// CSS
+import 'scss/site'
+// JS
+import('js/site')
+// Images
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
