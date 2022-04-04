@@ -1,4 +1,4 @@
-class Fav_Categories < ApplicationRecord
-belongs_to :user
-belongs_to :category
+class FavCategory < ApplicationRecord
+  belongs_to :user
+  belongs_to :category
 end
