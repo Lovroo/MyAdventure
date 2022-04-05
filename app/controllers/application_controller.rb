@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :name, :surname, :avatar, :email, :password, :current_password])
   end
   def after_sign_up_path_for(resource)
-    cat_select_category_select_path# <- Path you want to redirect the user to.
+    categories_select_category_select_path# <- Path you want to redirect the user to.
   end
 end
