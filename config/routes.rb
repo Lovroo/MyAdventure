@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   devise_for :users
   root :to => 'pages#home'
   post 'categories_select/category_select', to:  'categories_select#create'
+  get 'favorites', to: 'favorites#index'
 end

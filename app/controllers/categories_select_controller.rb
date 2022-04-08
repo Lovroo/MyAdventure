@@ -10,7 +10,7 @@ class CategoriesSelectController < ApplicationController
     respond_to do |format|
       if @FavCategory.save
         format.html { redirect_to root_path, notice: 'Categories successfuly selected.' }
-        format.json { render :show, status: :created, location: @FavCategory }
+        format.json { render :index, status: :created, location: @FavCategory }
       else
         format.json { render json: @FavCategory.errors, status: :unprocessable_entity }
       end

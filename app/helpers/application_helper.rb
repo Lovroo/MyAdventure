@@ -4,6 +4,7 @@ module ApplicationHelper
       if user_signed_in?
         concat link_to "Domov", root_path, class: 'w3-bar-item w3-button w3-border-right'
         concat link_to "Moj Profil", edit_user_registration_path, class: 'w3-bar-item w3-button w3-border-right'
+        concat link_to "My Favorites", favorites_path, class: 'w3-bar-item w3-button w3-border-right'
         concat link_to "Odjava", destroy_user_session_path, :method => :delete, class: 'w3-bar-item w3-button w3-border-right'
       else
         concat link_to "Domov", root_path, class: 'w3-bar-item w3-button w3-border-right'

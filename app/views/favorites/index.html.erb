@@ -1,0 +1,57 @@
+<h1>Your favorites</h1>
+<table class="main-table" style="width: 1296px;">
+  <tr >
+    <td class="side right" style="width: 20%">
+      <div class="filtri">
+        <h5 style="text-align: center">Filtriranje destinacij</h5>
+        <ul class="w3-ul w3-card-4" style="border-radius: 10px">
+          <% @categories = Category.all %>
+          <% @categories.each do |category| %>
+            <%q = params[:q] %>
+            <li><%= link_to category.name, {category_id: category.id, q: q}%></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </td>
+    <td class="side left"  style="width: 80%;">
+      <table class="right_table">
+        <thead>
+        </thead>
+        <tbody>
+        <% @favorites.each do |favorite| %>
+          <tr>
+            <td>
+              <div class="blog-card">
+                <div class="meta">
+                  <% if favorite.image.present?  %>
+                    <% image_url = favorite.image%>
+                  <% else %>
+                    <% image_url = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" %>
+                  <% end %>
+                  <img class="photo" src="<%= image_url %>">
+                  <ul class="details">
+                    <li class="author"><%= favorite.country %></li>
+                    <li class="city"><%= favorite.town %></li>
+                    <li class="status"><%= favorite.suburb %></li>
+                    <li class="date"><%= favorite.created_at.strftime(' %d %b %Y %H:%M:%S')  %></li>
+                    <li class="tags">
+                      <ul>
+                        <li><%= favorite.category || 'Brez kategorije' %></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="description">
+                  <p> <%= favorite.description.html_safe %></p>
+                  <p class="read-more">
+                  </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</table>

@@ -2,6 +2,9 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
   def new
   end
+  def index
+    @favorites = FavDestination.where(user_id: current_user.id)
+  end
 
   def create
     require 'net/http'
@@ -18,9 +21,9 @@ class FavoritesController < ApplicationController
         FavDestination.create(
           user_id: current_user.id,
           name: json['name'],
-          image: json['image'],
+          image: json['preview']['source'],
           category: json['kinds'],
-          suburb: json["address"]["road"],
+          suburb: json['address']['suburb'],
           description: json['wikipedia_extracts']['html'],
           country: json['address']['country'],
           town: json['address']['town'],
