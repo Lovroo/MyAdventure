@@ -126,7 +126,8 @@ map.on("load", function () {
 
 function onShowPOI(data, lngLat) {
     let poi = document.createElement("div");
-    poi.innerHTML = "<h2>" + data.name + "<p><a target='_blank' href='"+ data.otm + "'>" +
+    var xid = data.xid
+    poi.innerHTML = "<h2>" + data.name + "<p><a href='favorites/create?id="+ xid + "'>" +
         "<i class='fa fa-heart' style='padding-left: 5%'></i></a></p>" + "<h2>" ;
     poi.innerHTML += "<p><i>" + getCategoryName(data.kinds) + "</i></p>";
     if (data.preview) {
@@ -137,9 +138,7 @@ function onShowPOI(data, lngLat) {
         : data.info
             ? data.info.descr
             : "No description";
-
-    poi.innerHTML += "<p><a target='_blank' href='"+ data.otm + "'>Show more at OpenTripMap</a></p>";
-
+    
     new mapboxgl.Popup().setLngLat(lngLat)
         .setDOMContent(poi)
         .addTo(map);

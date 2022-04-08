@@ -1,0 +1,45 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  : MyString
+  town: MyString
+  : MyString
+  country: MyString
+  : MyString
+  suburb: MyString
+  : MyString
+  image: MyString
+  : 
+  description: MyString
+  : MyText
+  user_id: MyString
+  : 1
+  category: MyString
+  : MyString
+  lat: MyString
+  : MyString
+  lon: MyString
+  : MyString
+
+two:
+  name: MyString
+  : MyString
+  town: MyString
+  : MyString
+  country: MyString
+  : MyString
+  suburb: MyString
+  : MyString
+  image: MyString
+  : 
+  description: MyString
+  : MyText
+  user_id: MyString
+  : 1
+  category: MyString
+  : MyString
+  lat: MyString
+  : MyString
+  lon: MyString
+  : MyString
