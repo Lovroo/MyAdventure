@@ -7,9 +7,12 @@
         <ul class="w3-ul w3-card-4" style="border-radius: 10px">
           <% @categories = Category.all %>
           <% @categories.each do |category| %>
-            <%q = params[:q] %>
-            <li><%= link_to category.name, {category_name: category.name}%></a></li>
-          <% end %>
+            <% category_name = category.name %>
+            <% if category_name.count("_") > 0 %>
+              <% category_name = category_name.gsub("_", " ") %>
+        <% end %>
+            <li><%= link_to category_name.capitalize, {category_name: category.name}%></a></li>
+            <% end %>
         </ul>
       </div>
     </td>
