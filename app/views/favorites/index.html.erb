@@ -30,8 +30,12 @@
                   <% end %>
                   <img class="photo" src="<%= image_url %>">
                   <ul class="details">
-                    <li class="author"><%= favorite.country %></li>
+                    <% if favorite.country.present? %>
+                  <li class="author"><%= favorite.country %></li>
+                      <% end %>
+                    <% if favorite.town.present? %>
                     <li class="city"><%= favorite.town %></li>
+                      <% end %>
                     <% if favorite.suburb.present? %>
                   <li class="status"><%= favorite.suburb %></li>
                       <% end %>
@@ -47,6 +51,7 @@
                 <div class="description">
                   <p> <%= favorite.description.html_safe %></p>
                   <p class="read-more">
+                    <%= link_to "Delete", {id: favorite.id}, method: :delete %>
                   </p>
                 </div>
               </div>

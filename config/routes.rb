@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root :to => 'pages#home'
   post 'categories_select/category_select', to:  'categories_select#create'
   get 'favorites', to: 'favorites#index'
+  delete 'favorites', to: 'favorites#destroy'
 end
