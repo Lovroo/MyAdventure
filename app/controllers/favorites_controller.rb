@@ -4,6 +4,11 @@ class FavoritesController < ApplicationController
   end
   def index
     @favorites = FavDestination.where(user_id: current_user.id)
+    if params[:category_name]
+      @favorites = FavDestination.where("category LIKE ?", "%" + params[:category_name] + "%")
+    else
+      @favorites = FavDestination.where(user_id: current_user.id)
+    end
   end
 
   def create

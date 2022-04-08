@@ -8,7 +8,7 @@
           <% @categories = Category.all %>
           <% @categories.each do |category| %>
             <%q = params[:q] %>
-            <li><%= link_to category.name, {category_id: category.id, q: q}%></a></li>
+            <li><%= link_to category.name, {category_name: category.name}%></a></li>
           <% end %>
         </ul>
       </div>
@@ -32,11 +32,14 @@
                   <ul class="details">
                     <li class="author"><%= favorite.country %></li>
                     <li class="city"><%= favorite.town %></li>
-                    <li class="status"><%= favorite.suburb %></li>
+                    <% if favorite.suburb.present? %>
+                  <li class="status"><%= favorite.suburb %></li>
+                      <% end %>
                     <li class="date"><%= favorite.created_at.strftime(' %d %b %Y %H:%M:%S')  %></li>
                     <li class="tags">
                       <ul>
-                        <li><%= favorite.category || 'Brez kategorije' %></li>
+                        <% categories = favorite.category[/[^,]+/] %>
+                        <li><%= categories.capitalize || 'Brez kategorije' %></li>
                       </ul>
                     </li>
                   </ul>
