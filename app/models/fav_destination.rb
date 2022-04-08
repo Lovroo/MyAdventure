@@ -1,0 +1,2 @@
+class FavDestination < ApplicationRecord
+end

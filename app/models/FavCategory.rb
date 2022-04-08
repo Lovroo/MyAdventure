@@ -1,4 +1,6 @@
-class Fav_Categories < ApplicationRecord
-belongs_to :user
-belongs_to :category
+class FavCategory < ApplicationRecord
+  belongs_to :user
+  belongs_to :category
+  validates :user_id, presence: true
+  validates :category_id, presence: true
 end

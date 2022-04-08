@@ -1,0 +1,18 @@
+<div class="cat_select" style="margin: auto">
+  <h2>Choose 3 of your favorite travel categories</h2>
+  <%= form_with model: @FavCategory, method: 'POST' do |form|  %>
+    <%= form.label :Category1 %>
+      <%= form.collection_select :category_id, Category.all, :id, :name, prompt: 'First Category', class:'form-select form-select-lg mb-3' %>
+
+    <%= form.label :Category2 %>
+      <%= form.collection_select :category_id, Category.all, :id, :name, prompt: 'Second category', class:'form-select form-select-lg mb-3' %>
+
+    <%= form.label :Category3 %>
+      <%= form.collection_select :category_id, Category.all, :id, :name, prompt: 'Third category', class:'form-select form-select-lg mb-3' %>
+
+  <div class="actions">
+    <%= form.submit "Izberi", class:'button', style: 'border-radius: 15px;'  %>
+  </div>
+<% end %>
+
+</div>
