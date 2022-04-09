@@ -26,6 +26,15 @@
             <td>
               <div class="blog-card">
                 <div class="meta">
+                  <%
+                    require 'net/http'
+                    require 'json'
+                    lat = favorite.lat
+                  lon = favorite.lon
+                    result = Net::HTTP.get(URI.parse('https://api.openweathermap.org/data/2.5/weather?lat='+ lat +'&lon='+ lon +'&units=metric&appid=26b649b1c6b9aa6fde403ea73e1b3e10'))
+                    json = JSON.parse(result)
+
+                  %>
                   <% if favorite.image.present?  %>
                     <% image_url = favorite.image%>
                   <% else %>
@@ -53,6 +62,8 @@
                 </div>
                 <div class="description">
                   <p> <%= favorite.description.html_safe %></p>
+                  <p><i class="fa fa-umbrella"></i> <%= json['weather'][0]['description'].capitalize %></p>
+                  <p><i class="fa fa-temperature"></i> <%= json['main']['temp'] %> C°</p>
                   <p class="read-more">
                     <%= link_to "Delete", {id: favorite.id}, method: :delete %>
                   </p>
