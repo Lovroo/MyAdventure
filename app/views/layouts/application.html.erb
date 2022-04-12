@@ -20,7 +20,7 @@
         body,h1 {font-family: "Raleway", sans-serif}
         body, html {height: 100%}
         .bgimg {
-            background-image: url('https://www.sgs-latam.com/-/media/global/images/structural-website-images/hero-images/hero-agri-forestry.jpg');
+            background-image: url('https://images.pexels.com/photos/221395/pexels-photo-221395.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
             min-height: 100%;
             background-position: center;
             background-size: cover;
@@ -69,11 +69,14 @@
   </head>
 
   <body>
-  <div class="w3-bar w3-border w3-card-4 w3-light-grey" style="align-items: center;">
-    <%= display_navbar_session_links %>
-  </div>
-  <%= notice %>
+  <div class="bgimg w3-display-container w3-animate-opacity">
+    <div class="w3-display-topleft w3-padding-large w3-xlarge">
+      <%=  link_to image_pack_tag('logo/MyAdventure-logos_white.png', style: 'max-height: 100.5px'), root_path, style: ';padding:0px !important;' %>
+      <%=  display_navbar_session_links %>
+    </div>
+    <%= notice %>
   <%= alert %>
   <%= yield %>
+  </div>
   </body>
 </html>
