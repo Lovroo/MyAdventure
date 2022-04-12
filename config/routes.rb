@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'favorites/new'
   get 'favorites/create'
   get 'categories_select/category_select'
