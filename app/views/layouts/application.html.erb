@@ -69,13 +69,17 @@
   </head>
 
   <body>
+  <% if flash[:notice] %>
+    <p class="alert alert-success" role="alert"  style="margin: 0px;"><%= notice %></p>
+  <% end %>
+  <% if flash[:alert] %>
+    <p class="alert alert-danger" role="alert" style="margin: 0px;"><%= alert %></p>
+  <% end %>
   <div class="bgimg w3-display-container w3-animate-opacity">
     <div class="w3-display-topleft w3-padding-large w3-xlarge">
       <%=  link_to image_pack_tag('logo/MyAdventure-logos_white.png', style: 'max-height: 100.5px'), root_path, style: ';padding:0px !important;' %>
       <%=  display_navbar_session_links %>
     </div>
-    <%= notice %>
-  <%= alert %>
   <%= yield %>
   </div>
   </body>
