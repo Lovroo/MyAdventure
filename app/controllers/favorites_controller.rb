@@ -30,7 +30,7 @@ class FavoritesController < ApplicationController
       json = JSON.parse(result)
       name_of_place = json['name']
 
-    if FavDestination.where(name: name_of_place).exists?
+    if FavDestination.where(user_id: current_user.id).exists?
       respond_to do |format|
         format.html { redirect_to favorites_url, notice: "Destination already exists." }
         format.json { head :no_content }
