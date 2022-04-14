@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   post 'categories_select/category_select', to:  'categories_select#create'
   get 'favorites', to: 'favorites#index'
   delete 'favorites', to: 'favorites#destroy'
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 end
