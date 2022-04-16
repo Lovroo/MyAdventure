@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'favorites/new'
   get 'favorites/create'
   get 'categories_select/category_select'
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   root :to => 'pages#home'
   post 'categories_select/category_select', to:  'categories_select#create'
   get 'favorites', to: 'favorites#index'
