@@ -1,9 +1,9 @@
-<h1>Your favorites</h1>
+<section class="ftco-section">
 <table class="main-table" style="width: 1296px;">
   <tr >
     <td class="side right" style="width: 20%">
       <div class="filtri">
-        <h5 style="text-align: center">Filtriranje destinacij</h5>
+        <h5 style="text-align: center; color: navajowhite">Filtriranje destinacij</h5>
         <ul class="w3-ul w3-card-4" style="border-radius: 10px">
           <% @categories = Category.all %>
           <% @categories.each do |category| %>
@@ -11,7 +11,7 @@
             <% if category_name.count("_") > 0 %>
               <% category_name = category_name.gsub("_", " ") %>
         <% end %>
-            <li><%= link_to category_name.capitalize, {category_name: category.name}%></a></li>
+            <li style="color: whitesmoke"><%= link_to category_name.capitalize, {category_name: category.name}%></a></li>
             <% end %>
         </ul>
       </div>
@@ -77,3 +77,4 @@
     </td>
   </tr>
 </table>
+</section>

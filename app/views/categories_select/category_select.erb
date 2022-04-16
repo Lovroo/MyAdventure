@@ -1,18 +1,30 @@
-<div class="cat_select" style="margin: auto">
-  <h2>Choose 3 of your favorite travel categories</h2>
-  <%= form_with model: @FavCategory, method: 'POST' do |form|  %>
-    <%= form.label :Category1 %>
-      <%= form.collection_select :category_id, Category.all, :id, :name, prompt: 'First Category', class:'form-select form-select-lg mb-3' %>
-
-    <%= form.label :Category2 %>
-      <%= form.collection_select :category_id, Category.all, :id, :name, prompt: 'Second category', class:'form-select form-select-lg mb-3' %>
-
-    <%= form.label :Category3 %>
-      <%= form.collection_select :category_id, Category.all, :id, :name, prompt: 'Third category', class:'form-select form-select-lg mb-3' %>
-
-  <div class="actions">
-    <%= form.submit "Izberi", class:'button', style: 'border-radius: 15px;'  %>
-  </div>
+<%= form_with model: @FavCategory, method: 'POST' do |form| %>
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+          <h1 class="heading-section">Choose your favorite category!</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4" style="background-color: hsla(120, 90%, 0%, 0.7);border-radius: 15px;padding-top:40px;">
+          <div class="login-wrap p-0">
+            <div class="select" style="margin-bottom: 15px;">
+            <%= form.collection_select :category_id, Category.all, :id, :name, prompt: 'First Category', class:'select'  %>
+            </div>
+            <!--<div class="select" style="margin-bottom: 15px;">
+              < %= #form.collection_select :category_id, Category.all, :id, :name, prompt: 'Second category', class: 'form-select form-select-lg mb-3'  %>
+            </div>
+            <div class="select" style="margin-bottom: 15px;">
+              < %= #form.collection_select :category_id, Category.all, :id, :name, prompt: 'Third category', class: 'form-select form-select-lg mb-3'  %>
+            </div> -->
+            <div class="actions">
+              <%= form.submit "Choose", class: 'form-control btn btn-primary submit px-3', style: 'margin-top:15px;margin-bottom:15px;' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
 <% end %>
-
-</div>
