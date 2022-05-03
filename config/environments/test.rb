@@ -7,6 +7,15 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "example.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: 'ersgamejam2022@gmail.com',
+    password: 'zevniksef'
+  }
 
   config.cache_classes = false
   config.action_view.cache_template_loading = true
