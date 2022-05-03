@@ -7,8 +7,17 @@ Rails.application.configure do
   config.cache_classes = true
   config.action_mailer.delivery_method = :postmark
   config.action_mailer.postmark_settings = { api_token: 'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6' }
-  config.action_mailer.default_url_options = { :host => 'https://sejem.herokuapp.com/' }
-
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.postmarkapp.com',
+    port:                 587,
+    domain:               'lovro.tech',
+    user_name:            'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6',
+    password:             'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6',
+    authentication:       :plain,
+    enable_starttls_auto: true
+  }
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.

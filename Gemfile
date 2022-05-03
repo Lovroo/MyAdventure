@@ -39,6 +39,7 @@ gem 'json'
 gem 'ice_cube'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
 gem "aws-sdk-s3", require: false
 gem 'rails_admin'
 # Reduces boot times through caching; required in config/boot.rb
