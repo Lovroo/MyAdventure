@@ -7,14 +7,18 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = { api_token: 'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: 'ersgamejam2022@gmail.com',
-    password: 'zevniksef'
+    address:              'smtp.postmarkapp.com',
+    port:                 587,
+    domain:               'lovro.tech',
+    user_name:            'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6',
+    password:             'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6',
+    authentication:       :plain,
+    enable_starttls_auto: true
   }
 
   config.cache_classes = false
