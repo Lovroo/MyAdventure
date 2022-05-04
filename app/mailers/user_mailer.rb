@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
   include Devise::Mailers::Helpers
 
-  default from: "resetpass@lovro.tech"
+  default from: "ersgamejam2022@gmail.com"
 
   def confirmation_instructions(record, token, opts = {})
     @token = token
