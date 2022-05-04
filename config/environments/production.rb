@@ -15,7 +15,7 @@ Rails.application.configure do
     authentication: :cram_md5,
     enable_starttls_auto: true,
     user_name: 'apikey',
-    password: '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'
+    password: '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'
   }
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
