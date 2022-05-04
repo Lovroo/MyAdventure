@@ -10,10 +10,10 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 465,
-    :user_name            => "ersgamejam2022",
-    :password             => "zevniksef",
+    :address              => "mail.smtp2go.com",
+    :port                 => 2525,
+    :user_name            => "MainReset",
+    :password             => "P7aBxejYSctNRIGU",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
@@ -25,7 +25,7 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+  config.action_controller.perform_ caching = true
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).

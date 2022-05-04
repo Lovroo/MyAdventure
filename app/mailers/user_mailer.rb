@@ -25,5 +25,10 @@ class UserMailer < ActionMailer::Base
   def password_change(record, opts = {})
     devise_mail(record, :password_change, opts)
   end
+  def sendMail(email)
+    @greeting = "Hi"
+
+    mail to: email, subject: "Your Subject"
+  end
 end
 
