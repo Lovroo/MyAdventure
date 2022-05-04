@@ -12,8 +12,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "mail.smtp2go.com",
     :port                 => 2525,
-    :user_name            => "MainReset",
-    :password             => "P7aBxejYSctNRIGU",
+    :user_name            => "resetpass@lovro.tech",
+    :password             => "NCNEDELA1234",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }

@@ -75,14 +75,14 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   ActionMailer::Base.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = { :host => 'https://my-adventure-project.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "mail.smtp2go.com",
-    :port                 => 2525,
-    :user_name            => "MainReset",
-    :password             => "P7aBxejYSctNRIGU",
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "ersgamejam2022",
+    :password             => "zevniksef",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
