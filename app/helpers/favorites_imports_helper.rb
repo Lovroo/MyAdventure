@@ -1,0 +1,2 @@
+module FavoritesImportsHelper
+end

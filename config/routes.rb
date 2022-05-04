@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites_imports/new'
+  get 'favorites_imports/create'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'favorites/new'
   get 'favorites/create'
@@ -11,4 +13,5 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+  resources :favorites_imports, only: [:new, :create]
 end

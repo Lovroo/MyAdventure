@@ -7,20 +7,19 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.delivery_method = :postmark
-  config.action_mailer.postmark_settings = { api_token: 'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6' }
+  config.cache_classes = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.postmarkapp.com',
-    port:                 587,
-    domain:               'lovro.tech',
-    user_name:            'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6',
-    password:             'b36b73db-e15d-4e7e-9fc7-ffb49d73aab6',
-    authentication:       :plain,
-    enable_starttls_auto: true
+    address: 'smtp.sendgrid.net',
+    port: 587, # 8025, 587 and 25 can also be used.
+    domain: 'lovro.tech',
+    authentication: :cram_md5,
+    enable_starttls_auto: true,
+    user_name: 'apikey',
+    password: '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'
   }
-
   config.cache_classes = false
   config.action_view.cache_template_loading = true
 

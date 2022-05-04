@@ -1,0 +1,33 @@
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+          <h1 class="heading-section">Import your destinations</h1>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4" style="background-color: hsla(120, 90%, 0%, 0.7);border-radius: 15px;padding-top:40px;">
+          <div class="login-wrap p-0">
+            <div class="form-group">
+              <div class="field">
+                <%= form_for @favorites_import do |f| %>
+                  <% if @favorites_import.errors.any? %>
+                    <%= pluralize(@favorites_import.errors.count, "error") %> prevented us from
+                    importing your spreadsheet. Please update your spreadsheet and try agin.
+                    <ul>
+                      <% @favorites_import.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                  <%= f.file_field :file %>
+                  <%= f.submit "Import File" %>
+                <% end %>
+              </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
