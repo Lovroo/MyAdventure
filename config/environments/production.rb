@@ -4,18 +4,19 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.cache_classes = false
+
+  config.action_mailer.default_url_options = { :host => 'https://my-adventure-project.herokuapp.com/' }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 587, # 8025, 587 and 25 can also be used.
-    domain: 'lovro.tech',
-    authentication: :cram_md5,
+    address: "mail.smtp2go.com",
+    port: 25, # 8025, 587 and 25 can also be used.
+    domain: "lovro.tech",
+    authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'apikey',
-    password: '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'
+    user_name: "resetpass@lovro.tech",
+    password: "NCNEDELA1234"
   }
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers

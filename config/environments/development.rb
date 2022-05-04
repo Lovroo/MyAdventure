@@ -74,17 +74,16 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  config.cache_classes = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'https://my-adventure-project.herokuapp.com/' }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 587, # 8025, 587 and 25 can also be used.
-    domain: 'lovro.tech',
-    authentication: :cram_md5,
+    address: "mail.smtp2go.com",
+    port: 25, # 8025, 587 and 25 can also be used.
+    domain: "lovro.tech",
+    authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'apikey',
-    password: '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'
+    user_name: "resetpass@lovro.tech",
+    password: "NCNEDELA1234"
   }
 end
