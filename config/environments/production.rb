@@ -5,18 +5,17 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = false
-
-  config.action_mailer.default_url_options = { :host => 'https://my-adventure-project.herokuapp.com/' }
+  ActionMailer::Base.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "mail.smtp2go.com",
-    port: 25, # 8025, 587 and 25 can also be used.
-    domain: "lovro.tech",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "resetpass@lovro.tech",
-    password: "NCNEDELA1234"
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "ersgamejam2022",
+    :password             => "zevniksef",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
   }
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers

@@ -73,17 +73,18 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  ActionMailer::Base.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = { :host => 'https://my-adventure-project.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "mail.smtp2go.com",
-    port: 25, # 8025, 587 and 25 can also be used.
-    domain: "lovro.tech",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "resetpass@lovro.tech",
-    password: "NCNEDELA1234"
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "ersgamejam2022",
+    :password             => "zevniksef",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
   }
+
 end
