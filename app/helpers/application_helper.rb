@@ -5,6 +5,7 @@ module ApplicationHelper
         concat link_to "Home", root_path, class: 'w3-bar-item w3-button w3-text-white'
         concat link_to "Profile", edit_user_registration_path, class: 'w3-bar-item w3-button w3-text-white'
         concat link_to "My Favorites", favorites_path, class: 'w3-bar-item w3-button w3-text-white'
+        concat link_to "Import destinations", favorites_imports_new_path, class: 'w3-bar-item w3-button w3-text-white'
         if current_user.admin == true
           concat link_to "Admin", rails_admin_path, class: 'w3-bar-item w3-button w3-text-white'
         end

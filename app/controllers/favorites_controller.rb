@@ -10,6 +10,10 @@ class FavoritesController < ApplicationController
       @favorites = FavDestination.where(user_id: current_user.id)
     end
   end
+  def import
+    FavDestination.import(params[:file], current_user.id)
+    redirect_to favorites_url, notice: "Destinations imported."
+  end
   def destroy
     FavDestination.destroy(params[:id])
     respond_to do |format|

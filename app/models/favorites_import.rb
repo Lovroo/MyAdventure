@@ -21,32 +21,33 @@ class FavoritesImport
     end
   end
 
-  def load_imported_items
+  def load_imported_favorites
     spreadsheet = open_spreadsheet
     header = spreadsheet.row(5)
     (6..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      item = Item.find_by_id(row["id"]) || Item.new
-      item.attributes = row.to_hash
-      item
+      favorite = FavDestination.find_by_id(row["id"]) || FavDestination.new
+      favorite.attributes = row.to_hash
+      favorite
     end
   end
 
-  def imported_items
-    @imported_items ||= load_imported_items
+  def imported_favorites
+    @imported_favorites||= load_imported_favorites
   end
 
   def save
-    if imported_items.map(&:valid?).all?
-      imported_items.each(&:save!)
+    if imported_favorites.map(&:valid?).all?
+      imported_favorites.each(&:save!)
       true
     else
-      imported_items.each_with_index do |item, index|
-        item.errors.full_messages.each do |msg|
+      imported_favorites.each_with_index do |favorite, index|
+        favorite.errors.full_messages.each do |msg|
           errors.add :base, "Row #{index + 6}: #{msg}"
         end
       end
       false
     end
   end
+
 end

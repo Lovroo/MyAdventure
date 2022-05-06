@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  resources :favorites_imports, only: [:new, :create]
+  resources :favorites do
+    collection {post :import }
+  end
 end

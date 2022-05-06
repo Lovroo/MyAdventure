@@ -52,12 +52,14 @@
                   <li class="status"><%= favorite.suburb %></li>
                       <% end %>
                     <li class="date"><%= favorite.created_at.strftime(' %d %b %Y %H:%M:%S')  %></li>
-                    <li class="tags">
-                      <ul>
+                    <% if favorite.category.present? %>
+                  <li class="tags">
+                    <ul>
                         <% categories = favorite.category[/[^,]+/] %>
                         <li><%= categories.capitalize || 'Brez kategorije' %></li>
                       </ul>
                     </li>
+                      <% end %>
                   </ul>
                 </div>
                 <div class="description">
