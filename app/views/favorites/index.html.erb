@@ -1,82 +1,94 @@
 <section class="ftco-section">
-<table class="main-table" style="width: 1296px;">
-  <tr >
-    <td class="side right" style="width: 20%">
-      <div class="filtri">
-        <h5 style="text-align: center; color: navajowhite">Filtriranje destinacij</h5>
-        <ul class="w3-ul w3-card-4" style="border-radius: 10px">
-          <% @categories = Category.all %>
-          <% @categories.each do |category| %>
-            <% category_name = category.name %>
-            <% if category_name.count("_") > 0 %>
-              <% category_name = category_name.gsub("_", " ") %>
-        <% end %>
-            <li style="color: whitesmoke"><%= link_to category_name.capitalize, {category_name: category.name}%></a></li>
+  <table class="main-table" style="width: 1296px;">
+    <tr>
+      <td class="side right" style="width: 20%">
+        <div class="filtri">
+          <h3 style="text-align: center; color: navajowhite">You have visited <%= @favorites.where(visited: true).count  %> destinations.</h3>
+          <h5 style="text-align: center; color: navajowhite">Filtriranje destinacij</h5>
+          <ul class="w3-ul w3-card-4" style="border-radius: 10px">
+            <% @categories = Category.all %>
+            <% @categories.each do |category| %>
+              <% category_name = category.name %>
+              <% if category_name.count("_") > 0 %>
+                <% category_name = category_name.gsub("_", " ") %>
+              <% end %>
+              <li style="color: whitesmoke"><%= link_to category_name.capitalize, { category_name: category.name } %></a></li>
             <% end %>
-        </ul>
-      </div>
-    </td>
-    <td class="side left"  style="width: 80%;">
-      <table class="right_table">
-        <thead>
-        </thead>
-        <tbody>
-        <% @favorites.each do |favorite| %>
-          <tr>
-            <td>
-              <div class="blog-card">
-                <div class="meta">
-                  <%
-                    require 'net/http'
-                    require 'json'
-                    lat = favorite.lat
-                  lon = favorite.lon
-                    result = Net::HTTP.get(URI.parse('https://api.openweathermap.org/data/2.5/weather?lat='+ lat +'&lon='+ lon +'&units=metric&appid=26b649b1c6b9aa6fde403ea73e1b3e10'))
-                    json = JSON.parse(result)
+          </ul>
+        </div>
+      </td>
+      <td class="side left" style="width: 80%;">
+        <table class="right_table">
+          <thead>
+          </thead>
+          <tbody>
+          <% @favorites.each do |favorite| %>
+            <tr>
+              <td>
+                <div class="blog-card">
+                  <div class="meta">
+                    <%
+                      require 'net/http'
+                      require 'json'
+                      lat = favorite.lat
+                      lon = favorite.lon
+                      result = Net::HTTP.get(URI.parse('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&appid=26b649b1c6b9aa6fde403ea73e1b3e10'))
+                      json = JSON.parse(result)
 
-                  %>
-                  <% if favorite.image.present?  %>
-                    <% image_url = favorite.image%>
-                  <% else %>
-                    <% image_url = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" %>
-                  <% end %>
-                  <img class="photo" src="<%= image_url %>">
-                  <ul class="details">
-                    <% if favorite.country.present? %>
-                  <li class="author"><%= favorite.country %></li>
+                    %>
+                    <% if favorite.image.present? %>
+                      <% image_url = favorite.image %>
+                    <% else %>
+                      <% image_url = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" %>
+                    <% end %>
+                    <img class="photo" src="<%= image_url %>">
+                    <ul class="details">
+                      <% if favorite.country.present? %>
+                        <li class="author"><%= favorite.country %></li>
                       <% end %>
-                    <% if favorite.town.present? %>
-                    <li class="city"><%= favorite.town %></li>
+                      <% if favorite.town.present? %>
+                        <li class="city"><%= favorite.town %></li>
                       <% end %>
-                    <% if favorite.suburb.present? %>
-                  <li class="status"><%= favorite.suburb %></li>
+                      <% if favorite.suburb.present? %>
+                        <li class="status"><%= favorite.suburb %></li>
                       <% end %>
-                    <li class="date"><%= favorite.created_at.strftime(' %d %b %Y %H:%M:%S')  %></li>
-                    <% if favorite.category.present? %>
-                  <li class="tags">
-                    <ul>
-                        <% categories = favorite.category[/[^,]+/] %>
-                        <li><%= categories.capitalize || 'Brez kategorije' %></li>
-                      </ul>
-                    </li>
+                      <li class="date"><%= favorite.created_at.strftime(' %d %b %Y %H:%M:%S') %></li>
+                      <% if favorite.category.present? %>
+                        <li class="tags">
+                          <ul>
+                            <% categories = favorite.category[/[^,]+/] %>
+                            <li><%= categories.capitalize || 'Brez kategorije' %></li>
+                          </ul>
+                        </li>
                       <% end %>
-                  </ul>
+                    </ul>
+                  </div>
+                  <div class="description">
+                    <h1 style="color: darkgray"><i><%= favorite.name.html_safe %></i></h1>
+                    <p> <%= favorite.description.html_safe %></p>
+                    <p><i class="fa fa-umbrella"></i> <%= json['weather'][0]['description'].capitalize %></p>
+                    <p><i class="fa fa-temperature"></i> <%= json['main']['temp'] %> C°</p>
+                    <div class="read-more">
+                      <% if current_user.favorited?(favorite)
+                           text = "Visited";
+                         else
+                           text = "Not visited"
+                         end
+                      %>
+                      <div class="<%= 'fa fa-check' if current_user.favorited?(favorite) %>" data-id="<%= favorite.id %>">
+                      </div>
+                      <% javascript_pack_tag 'likes' %>
+                      <%= link_to text, toggle_favorite_favorite_path(favorite), remote: true, method: :post %>
+                      <%= link_to "Delete", { id: favorite.id }, method: :delete %>
+                    </div>
+                  </div>
                 </div>
-                <div class="description">
-                  <p> <%= favorite.description.html_safe %></p>
-                  <p><i class="fa fa-umbrella"></i> <%= json['weather'][0]['description'].capitalize %></p>
-                  <p><i class="fa fa-temperature"></i> <%= json['main']['temp'] %> C°</p>
-                  <p class="read-more">
-                    <%= link_to "Delete", {id: favorite.id}, method: :delete %>
-                  </p>
-                </div>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </td>
-  </tr>
-</table>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
 </section>

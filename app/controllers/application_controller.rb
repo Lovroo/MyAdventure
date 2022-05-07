@@ -9,4 +9,7 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     categories_select_category_select_path# <- Path you want to redirect the user to.
   end
+  def ranking
+    User.join(:favorites).select("users.id, sum(favorites.traveled.true) as accumulated").group("users.id").order("accumulated DESC")
+  end
 end

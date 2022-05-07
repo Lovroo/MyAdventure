@@ -1,5 +1,5 @@
 class FavDestination < ApplicationRecord
-  validates_presence_of :name, :description, :image, :country, :lat, :lon, :user_id, :town
+  acts_as_favoritable
   def self.import(file, current_user)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
@@ -8,6 +8,7 @@ class FavDestination < ApplicationRecord
       product = find_by_id(row["id"]) || new
       product.attributes = row.to_hash.slice(*row.to_hash.keys)
       product.user_id = current_user
+      product.visited = false
       product.save!
     end
   end

@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   resources :favorites do
-    collection {post :import }
+    collection {post :import, :create}
+  end
+  resources :favorites, only: :index do
+    member do
+      post 'toggle_favorite', to: "favorites#toggle_favorite"
+    end
   end
 end

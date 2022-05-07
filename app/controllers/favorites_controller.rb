@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: :toggle_favorite
   def new
   end
   def index
@@ -9,6 +9,12 @@ class FavoritesController < ApplicationController
     else
       @favorites = FavDestination.where(user_id: current_user.id)
     end
+  end
+
+  def toggle_favorite
+    @favorite = FavDestination.find_by(id: params[:id])
+    current_user.favorited?(@favorite) ? current_user.unfavorite(@favorite) && @favorite.update(visited: false) : current_user.favorite(@favorite) && @favorite.update(visited: true)
+    @favorite.update(favorited: true)
   end
   def import
     FavDestination.import(params[:file], current_user.id)
