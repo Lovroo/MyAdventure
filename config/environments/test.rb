@@ -12,13 +12,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 587, # 8025, 587 and 25 can also be used.
-    domain: 'lovro.tech',
-    authentication: :cram_md5,
-    enable_starttls_auto: true,
-    user_name: 'apikey',
-    password: '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'
+
   }
   config.cache_classes = false
   config.action_view.cache_template_loading = true
