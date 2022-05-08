@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!, only: :toggle_favorite
+  before_action :authenticate_user!
   def new
   end
   def index
