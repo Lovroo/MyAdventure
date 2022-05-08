@@ -1,4 +1,8 @@
 newsletter_mailer_job:
-  cron: "0 12 * * 4"
+  cron: "0 14 * * 4"
   class: "NewsletterMailerJob"
+  queue: default
+weather_mailer_job:
+  cron: "0 12 * * 4"
+  class: "WeatherMailerJob"
   queue: default
