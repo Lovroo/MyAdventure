@@ -8,6 +8,7 @@ module ApplicationHelper
         concat link_to "Import destinations", favorites_imports_new_path, class: 'w3-bar-item w3-button w3-text-white'
         if current_user.admin == true
           concat link_to "Admin", rails_admin_path, class: 'w3-bar-item w3-button w3-text-white'
+          concat link_to "Sidekiq", sidekiq_web_path , class: 'w3-bar-item w3-button w3-text-white'
         end
         concat link_to "Log out", destroy_user_session_path, :method => :delete, class: 'w3-bar-item w3-button w3-text-white'
       else

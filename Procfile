@@ -1,3 +1,4 @@
 web: bundle exec rails s
-worker: bundle exec sidekiq -v
 paperboy: bundle exec maily_herald paperboy
+web: bin/rails server -p ${PORT:-5000} -e $RAILS_ENV
+worker: bundle exec sidekiq
