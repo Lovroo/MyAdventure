@@ -69,11 +69,6 @@
                     <p> <%= favorite.description.html_safe %></p>
                     <p><i class="fa fa-umbrella"></i> <%= json['weather'][0]['description'].capitalize %></p>
                     <p><i class="fa fa-temperature"></i> <%= json['main']['temp'] %> C°</p>
-<%if weather == "clear sky"%>
-                    <h3>Dela!</h3>
-                      <% else %>
-                    <h3>Ne dela!</h3>
-                      <% end %>
                     <div class="read-more">
                       <% if current_user.favorited?(favorite)
                            text = "Visited";
