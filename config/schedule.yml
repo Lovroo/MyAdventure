@@ -1,0 +1,4 @@
+newsletter_mailer_job:
+  cron: "0 12 * * 4"
+  class: "NewsletterMailerJob"
+  queue: default

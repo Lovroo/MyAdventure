@@ -1,0 +1,62 @@
+ <% @destinations.each do |favorite| %>
+          <%
+            require 'net/http'
+            require 'json'
+            lat = favorite.lat
+            lon = favorite.lon
+            result = Net::HTTP.get(URI.parse('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&appid=26b649b1c6b9aa6fde403ea73e1b3e10'))
+            json = JSON.parse(result)
+
+          %>
+          <%
+            weather =  json['weather'][0]['description']
+          %>
+            <% if weather == "clear sky"%>
+      <tr>
+        <td>
+          <div class="blog-card">
+            <h1>Good News! This destination has good weather right now!</h1>
+            <div class="meta">
+              <% if favorite.image.present? %>
+            <% image_url = favorite.image %>
+          <% else %>
+            <% image_url = "https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" %>
+          <% end %>
+          <img class="photo" alt="slika" src="<%= image_url %>">
+          <ul class="details">
+            <% if favorite.country.present? %>
+              <li class="author"><%= favorite.country %></li>
+            <% end %>
+            <% if favorite.town.present? %>
+              <li class="city"><%= favorite.town %></li>
+            <% end %>
+            <% if favorite.suburb.present? %>
+              <li class="status"><%= favorite.suburb %></li>
+            <% end %>
+            <li class="date"><%= favorite.created_at.strftime(' %d %b %Y %H:%M:%S') %></li>
+            <% if favorite.category.present? %>
+              <li class="tags">
+                <ul>
+                  <% categories = favorite.category[/[^,]+/] %>
+                  <li><%= categories.capitalize || 'Brez kategorije' %></li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="description">
+          <h1 style="color: darkgray"><i><%= favorite.name.html_safe %></i></h1>
+          <p> <%= favorite.description.html_safe %></p>
+          <p><i class="fa fa-umbrella"></i> <%= json['weather'][0]['description'].capitalize %></p>
+          <p><i class="fa fa-temperature"></i> <%= json['main']['temp'] %> C°</p>
+        </div>
+      </div>
+            <% else %>
+            <div class="description">
+<h3>None of your destinations have good weather! Better luck next week!</h3>
+            </div>
+            <% break %>
+            <% end %>
+  </tr>
+
+  <% end %>

@@ -1,3 +1,6 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 Rails.application.routes.draw do
   get 'favorites_imports/new'
   get 'favorites_imports/create'
@@ -20,5 +23,8 @@ Rails.application.routes.draw do
     member do
       post 'toggle_favorite', to: "favorites#toggle_favorite"
     end
+  end
+  authenticate :user do
+  mount Sidekiq::Web => '/sidekiq'
   end
 end

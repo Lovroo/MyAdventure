@@ -34,6 +34,7 @@
                       lon = favorite.lon
                       result = Net::HTTP.get(URI.parse('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&appid=26b649b1c6b9aa6fde403ea73e1b3e10'))
                       json = JSON.parse(result)
+                      weather =  json['weather'][0]['description']
 
                     %>
                     <% if favorite.image.present? %>
@@ -68,6 +69,11 @@
                     <p> <%= favorite.description.html_safe %></p>
                     <p><i class="fa fa-umbrella"></i> <%= json['weather'][0]['description'].capitalize %></p>
                     <p><i class="fa fa-temperature"></i> <%= json['main']['temp'] %> C°</p>
+<%if weather == "clear sky"%>
+                    <h3>Dela!</h3>
+                      <% else %>
+                    <h3>Ne dela!</h3>
+                      <% end %>
                     <div class="read-more">
                       <% if current_user.favorited?(favorite)
                            text = "Visited";

@@ -43,6 +43,9 @@ gem 'ice_cube'
 gem 'acts_as_favoritor'
 gem "aws-sdk-s3", require: false
 gem 'rails_admin'
+gem 'sidekiq'
+gem 'maily_herald'
+gem 'sidekiq-cron'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
