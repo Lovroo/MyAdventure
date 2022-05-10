@@ -21,7 +21,7 @@
                 <% if current_user.avatar.present? %>
                   <%= image_tag(current_user.avatar.variant(resize_to_fill: [50, 50]), class: "rounded-circle") %>
                 <% else %>
-                  <img alt="image" class="rounded-circle" src="https://howlongtobeat.com/avatars/1546983199.png">
+                  <img alt="image" class="rounded-circle" src="https://howlongtobeat.com/avatars/1546983199.png" style="height: 50px;margin-left: 25px; margin-top: 25px;">
                 <% end %>
                 <label class="col-sm-4 col-form-label">
                   <% if current_user.avatar.present? %><br/>Current: <%= current_user.avatar.filename.to_s %>
