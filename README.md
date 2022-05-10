@@ -1,7 +1,6 @@
 MyAdventure
 
 MyAdventure is a web app made in Ruby on rails for our class RPA.
-Live preview
 
 A live version of the application is hosted on `https://my-adventure-project.herokuapp.com
 Heroku is right now not working becaouse of server erorr.
@@ -15,6 +14,9 @@ Features
     Responsive theme
     Admin panel for admin users.
     Likeing favourite places
+    CRON Job management
+    Live translation
+    
 
 Screenshots
 
